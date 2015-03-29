@@ -1,18 +1,36 @@
 % chose the documnet class as article
 \documentclass[11pt]{article}
 
+% create a new command 
+\newcommand{\hwtitle}{Homework\ \#1}
+\newcommand{\student}{Zeng Xiangrong}
+\newcommand{\teacher}{Professor Hao Wang}
+
 % this package is used for setting header and footer
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
 \begin{document}
-% input the title file 
-\input{./template-title.tex}
+% set the title page
+\begin{titlepage}
+\begin{center}
+    \textbf{}
+    \\[4.5cm]
+    \textbf{\huge \hwtitle}
+    \\[0.3cm]
+    \textnormal{Due on}
+    \today
+    \\[0.4cm]
+    \emph{\teacher}
+    \\[8cm]
+    \textbf{\Large \student}
+\end{center}
+\end{titlepage}
 
 % setting the header and footer
 \fancyhf{} % clear the header and footer
-\lhead{Zeng Xiangrong}
-\chead{Homework} % need to be modified in every homework
+\lhead{\student}
+\chead{\hwtitle}
 \rhead{problem \thesection}
 \renewcommand{\footrulewidth}{0.4pt}
 \cfoot{\thepage}

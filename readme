@@ -1,3 +1,7 @@
-The following items should be modified in every homework
-    1.modified the title in template-title.tex
-    2.modified the chead of the header in template.tex
+The template.tex is created for the Big Date On Social Media Mining and Analytics
+class's homework.
+when use it to crate a new homework file, please change the value of:
+    1.\hwtitle  #   the title of this homework
+    2.\student  #   the name of the student who write the homework
+    3.\teacher  #   the name of the teacher 
+you can find the defination of them at the very begning of the template.tex file

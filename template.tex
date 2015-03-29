@@ -1,0 +1,40 @@
+% chose the documnet class as article
+\documentclass[11pt]{article}
+
+% this package is used for setting header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\begin{document}
+% input the title file 
+\input{./template-title.tex}
+
+% setting the header and footer
+\fancyhf{} % clear the header and footer
+\lhead{Zeng Xiangrong}
+\chead{Homework} % need to be modified in every homework
+\rhead{problem \thesection}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{\thepage}
+
+% setting the section style
+\setcounter{section}{0} % set the counter start from 0
+% set the section style to "problem 1" and increase correctly
+\renewcommand{\section}{
+    \stepcounter{section}
+    \begin{flushleft}
+        \raggedright \Large\textbf{Problem \thesection\\}
+    \end{flushleft}}
+\section
+% put the main text of every problem here
+we have
+\section
+the purpose
+\section
+the purpose
+\section
+the purpose
+\section
+the purpose
+
+\end{document}

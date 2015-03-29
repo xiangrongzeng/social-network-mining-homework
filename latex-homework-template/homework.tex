@@ -1,0 +1,237 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{CJK}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#1}
+\newcommand{\hmwkDueDate}{May 14, 2015}
+\newcommand{\hmwkClass}{Homework Template}
+\newcommand{\hmwkClassTime}{March 27, 2015}
+\newcommand{\hmwkClassInstructor}{Professor Hao Wang}
+\newcommand{\hmwkAuthorName}{Jun Huang}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+    \vspace{0.1in}\large{\textit{\hmwkClassInstructor\ \hmwkClassTime}}
+    \vspace{3in}
+}
+
+\author{\textbf{\hmwkAuthorName}}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\pagebreak
+Dear all students, \\
+
+We encourage you to do the homework by this \LaTeX~format, but not necessary. You can download CTEX(available at http://www.ctex.org/HomePage) and install it. For the instructions about how to use \LaTeX, you can search it from Google and Baidu. Here is a useful link: http://en.wikibooks.org/wiki/LaTeX, you could find all the answers about how to edit your homework by \LaTeX ~when you doing your homework.
+
+
+\begin{homeworkProblem}
+    Give an appropriate positive constant \(c\) such that \(f(n) \leq c \cdot
+    g(n)\) for all \(n > 1\).
+
+    \begin{enumerate}
+        \item \(f(n) = n^2 + n + 1\), \(g(n) = 2n^3\)
+        \item \(f(n) = n\sqrt{n} + n^2\), \(g(n) = n^2\)
+        \item \(f(n) = n^2 - n + 1\), \(g(n) = n^2 / 2\)
+    \end{enumerate}
+
+    \textbf{Solution}
+
+    We solve each solution algebraically to determine a possible constant
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Give an appropriate positive constant \(c\) such that \(f(n) \leq c \cdot
+    g(n)\) for all \(n > 1\).
+
+    \begin{enumerate}
+        \item \(f(n) = n^2 + n + 1\), \(g(n) = 2n^3\)
+        \item \(f(n) = n\sqrt{n} + n^2\), \(g(n) = n^2\)
+        \item \(f(n) = n^2 - n + 1\), \(g(n) = n^2 / 2\)
+    \end{enumerate}
+
+    \textbf{Solution}
+
+    We solve each solution algebraically to determine a possible constant.....
+
+\end{homeworkProblem}
+\pagebreak
+
+\begin{CJK}{UTF8}{song}
+ \section{社交媒体大数据挖掘与分析 \LaTeX 作业模板}
+\end{CJK}
+
+\subsection{How to write chinese}
+
+\begin{CJK}{UTF8}{song}
+ 给大家提供一个简单的社交媒体大数据挖掘与分析 \LaTeX 作业模板，你也可以按照自己的方式来编辑 \LaTeX 文档或者使用Word编辑，没有强制要求。但是练习使用 \LaTeX 编辑文档是非常有必要的，后面大家撰写科技论文基本上都是使用\LaTeX 模板的。这里我只介绍一种简单的方式去编辑中文，在要输入中文的前后分别加上$\backslash$begin\{CJK\}\{UTF8\}\{song\} 和 $\backslash$end\{CJK\}。当然，你可以去搜索下其它的中文模板。
+\end{CJK}
+
+\subsection{How to add equations}
+\begin{eqnarray}
+y &=& ax^2+bx+c \nonumber \\
+~ &=& (x+p)(x+q)
+\end{eqnarray}
+
+\subsection{How to add pictures}
+
+\begin{figure}[htbp]
+  \centering
+  \subfigure[example1]{
+    \label{fig:imageexample:subfig:a}
+    \includegraphics[width=0.2\textwidth,height=1in]{example1}}
+  \subfigure[example1]{
+    \label{fig:imageexample:subfig:b}
+    \includegraphics[width=0.2\textwidth,height=1in]{example2}}
+    \caption{Two nature scene image examples}
+  \label{fig:imageexample}
+\end{figure}
+
+\subsection{How to add tables}
+\begin{table}[here]
+\begin{center}
+\caption{Table caption} \label{tab:cap}
+\begin{tabular}{|c|c|c|}
+  \hline
+  % after \\: \hline or \cline{col1-col2} \cline{col3-col4} ...
+  Column One & Column Two & Column Three
+  \\
+  \hline
+  Cell 1 & Cell 2 & Cell 3 \\
+  Cell 4 & Cell 5 & Cell 6 \\
+  \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\section{Citations and References}
+
+List and number all bibliographical references at the end of the paper. The references can be numbered in alphabetic order or in order of appearance in the document. When referring to them in the text, type the corresponding reference number in square brackets as shown at the end of this sentence~\cite{Morgan2005}. All citations must be adhered to IEEE format and style. Examples such as~\cite{Morgan2005},~\cite{cooley65} and~\cite{haykin02} are given in Section 12.
+
+\bibliographystyle{IEEEbib}
+\bibliography{reference}
+\end{document}

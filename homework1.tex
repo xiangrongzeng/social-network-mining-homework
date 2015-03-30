@@ -1,0 +1,66 @@
+% chose the documnet class as article
+\documentclass{article}
+
+% basic setteings
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+% create a new command 
+\newcommand{\hwtitle}{Graph Essentials:Homework\ \#1}
+\newcommand{\student}{Zeng Xiangrong}
+\newcommand{\teacher}{Professor Hao Wang}
+
+% this package is used for setting header and footer
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\begin{document}
+% set the title page
+\begin{titlepage}
+\begin{center}
+    \textbf{}
+    \\[4.5cm]
+    \textbf{\huge \hwtitle}
+    \\[0.3cm]
+    \textnormal{Due on}
+    \today
+    \\[0.4cm]
+    \emph{\teacher}
+    \\[8cm]
+    \textbf{\Large \student}
+\end{center}
+\end{titlepage}
+
+% setting the header and footer
+\fancyhf{} % clear the header and footer
+\lhead{\student}
+\chead{\hwtitle}
+\rhead{Problem \thesection}
+\renewcommand{\footrulewidth}{0.4pt}
+\cfoot{\thepage}
+
+% setting the section style
+\setcounter{section}{0} % set the counter start from 0
+% set the section style to "problem 1" and increase correctly
+\renewcommand{\section}{
+    \stepcounter{section}
+    \begin{flushleft}
+        \raggedright \Large\textbf{Problem \thesection\\}
+    \end{flushleft}}
+\section
+% put the main text of every problem here
+Proof: Lemma2. In any directed graph, the summation of in-degrees is equal to the summation of out-degree.
+\subsection*{Solution}
+My answer is ...
+\clearpage
+
+\section
+% put the main text of every problem here
+Give an efficient bridge detection algorithm.
+\subsection*{Solution}
+
+\end{document}

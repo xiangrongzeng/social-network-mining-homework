@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<project name="centrality" default="test" basedir="c:\Users\sunder\Documents\latexfile\social-network-mining\source">
+    <property name="src.dir" value="${basedir}\centrality" />
+    <property name="build.dir" value="${basedir}\classes" />
+
+    <path id="classpath">
+        <pathelement location="${basedir}\classes" />
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}" />
+    </target>
+
+    <target name="build" depends="init" description="build all" >
+        <javac
+            srcdir="${src.dir}" destdir="${build.dir}">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="test" depends="build" description="run test">
+        <java classname="centrality.AllTests" fork="yes">
+            <classpath refid="classpath" />
+        </java>
+    </target>
+</project>
+

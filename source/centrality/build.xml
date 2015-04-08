@@ -3,9 +3,11 @@
 <project name="centrality" default="test" basedir="c:\Users\sunder\Documents\latexfile\social-network-mining\source">
     <property name="src.dir" value="${basedir}\centrality" />
     <property name="build.dir" value="${basedir}\classes" />
+    <property name="jamajar" value="${basedir}\jama.jar" />
 
     <path id="classpath">
-        <pathelement location="${basedir}\classes" />
+        <pathelement location="${build.dir}" />
+        <pathelement location="${jamajar}" />
     </path>
 
     <target name="init">

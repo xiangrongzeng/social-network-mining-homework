@@ -3,26 +3,40 @@ package centrality;
 import centrality.*;
 
 class AllTests {
-    static final String NEWLINE = "\n";
-    static AdjacentMatrix adjm = new AdjacentMatrix();
+    static final String NEWLINE = "\r\n";
     public static void main(String[] args) {
 //        testMatrix();
-        testDegreeCentrality();
+//        testDegreeCentrality();
+//        testEigenvectorCentrality();
+        testKatzCentrality();
     }
     static void testMatrix(){
-        System.out.println(adjm.getLength());
-        System.out.println(adjm.getWidth());
-        for (int i=0; i<adjm.getLength(); i++) {
-            for (int j=0; j<adjm.getWidth(); j++) {
-                System.out.println(adjm.get(i,j));
+        System.out.println(AdjacentMatrix.getLength());
+        System.out.println(AdjacentMatrix.getWidth());
+        for (int i=0; i<AdjacentMatrix.getLength(); i++) {
+            for (int j=0; j<AdjacentMatrix.getWidth(); j++) {
+                System.out.println(AdjacentMatrix.get(i,j));
             }
             System.out.println(NEWLINE);
         }
     }
 
     static void testDegreeCentrality(){
-        for (int i = 0; i < DegreeCentrality.calculate().length; i++){
-            System.out.println(DegreeCentrality.calculate()[i]);
+        for (int node = 0; node <AdjacentMatrix.getLength(); node++){
+            System.out.println(DegreeCentrality.get(node));
+        }
+    }
+
+    static void testEigenvectorCentrality(){
+        System.out.println(EigenvectorCentrality.getLargestEigenvalueNumber());
+        for (int node = 0; node <AdjacentMatrix.getLength(); node++){
+            System.out.println(EigenvectorCentrality.get(node));
+        }
+    }
+
+    static void testKatzCentrality(){
+        for (int node = 0; node <AdjacentMatrix.getLength(); node++){
+            System.out.println(KatzCentrality.get(node));
         }
     }
 }

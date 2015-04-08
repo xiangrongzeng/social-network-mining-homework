@@ -8,8 +8,10 @@ class AllTests {
 //        testMatrix();
 //        testDegreeCentrality();
 //        testEigenvectorCentrality();
-        testKatzCentrality();
+//        testKatzCentrality();
+        testPagerankCentrality();
     }
+
     static void testMatrix(){
         System.out.println(AdjacentMatrix.getLength());
         System.out.println(AdjacentMatrix.getWidth());
@@ -37,6 +39,12 @@ class AllTests {
     static void testKatzCentrality(){
         for (int node = 0; node <AdjacentMatrix.getLength(); node++){
             System.out.println(KatzCentrality.get(node));
+        }
+    }
+
+    static void testPagerankCentrality(){
+        for(int node = 0; node < AdjacentMatrix.getLength(); node++){
+            System.out.println(PagerankCentrality.get(node));
         }
     }
 }

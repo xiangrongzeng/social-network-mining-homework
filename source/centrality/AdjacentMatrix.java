@@ -17,11 +17,11 @@ class AdjacentMatrix {
 
     // for @Test
     private static double[][] adjacentMatrix = {
-        {0,1,1,1,0},
-        {1,0,1,1,1},
-        {1,1,0,1,1},
-        {1,1,1,0,0},
-        {0,1,1,0,0}};
+        {0,1,0,1,1},
+        {1,0,1,0,1},
+        {0,1,0,1,1},
+        {1,0,1,0,0},
+        {1,1,1,0,0}};
 
     public static double[][] get() {
         return adjacentMatrix;

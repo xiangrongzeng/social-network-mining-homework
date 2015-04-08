@@ -2,31 +2,40 @@
 package centrality;
 
 class AdjacentMatrix {
-    private int[][] adjacentMatrix = {
-        {0,1,0,0,0,0,0,0,0,0},
-        {1,0,1,0,0,0,0,0,0,0},
-        {0,1,0,1,1,1,0,0,0,0},
-        {0,0,1,0,1,1,0,0,0,0},
-        {0,0,1,1,0,1,0,0,0,0},
-        {0,0,1,1,1,0,1,0,0,0},
-        {0,0,0,0,0,1,0,1,1,0},
-        {0,0,0,0,0,0,1,0,1,1},
-        {0,0,0,0,0,0,1,1,0,1},
-        {0,0,0,0,0,0,0,1,1,0}};
+    private AdjacentMatrix(){}
+//    private static double[][] adjacentMatrix = {
+//        {0,1,0,0,0,0,0,0,0,0},
+//        {1,0,1,0,0,0,0,0,0,0},
+//        {0,1,0,1,1,1,0,0,0,0},
+//        {0,0,1,0,1,1,0,0,0,0},
+//        {0,0,1,1,0,1,0,0,0,0},
+//        {0,0,1,1,1,0,1,0,0,0},
+//        {0,0,0,0,0,1,0,1,1,0},
+//        {0,0,0,0,0,0,1,0,1,1},
+//        {0,0,0,0,0,0,1,1,0,1},
+//        {0,0,0,0,0,0,0,1,1,0}};
 
-    int[][] get() {
+    // for @Test
+    private static double[][] adjacentMatrix = {
+        {0,1,1,1,0},
+        {1,0,1,1,1},
+        {1,1,0,1,1},
+        {1,1,1,0,0},
+        {0,1,1,0,0}};
+
+    public static double[][] get() {
         return adjacentMatrix;
     }
 
-    int get(int i, int j){
+    public static double get(int i, int j){
         return adjacentMatrix[i][j];
     }
 
-    int getLength(){
+    public static int getLength(){
         return adjacentMatrix.length;
     }
 
-    int getWidth(){
+    public static int getWidth(){
         return adjacentMatrix[0].length;
     }
 }

@@ -4,10 +4,12 @@
     <property name="src.dir" value="${basedir}\centrality" />
     <property name="build.dir" value="${basedir}\classes" />
     <property name="jamajar" value="${basedir}\jama.jar" />
+    <property name="jgraphtjar" value="${basedir}\jgrapht.jar" />
 
     <path id="classpath">
         <pathelement location="${build.dir}" />
         <pathelement location="${jamajar}" />
+        <pathelement location="${jgraphtjar}" />
     </path>
 
     <target name="init">

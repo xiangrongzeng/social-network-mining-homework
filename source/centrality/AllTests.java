@@ -9,7 +9,9 @@ class AllTests {
 //        testDegreeCentrality();
 //        testEigenvectorCentrality();
 //        testKatzCentrality();
-        testPagerankCentrality();
+//        testPagerankCentrality();
+        testGraph();
+        testClosenessCentrality();
     }
 
     static void testMatrix(){
@@ -45,6 +47,17 @@ class AllTests {
     static void testPagerankCentrality(){
         for(int node = 0; node < AdjacentMatrix.getLength(); node++){
             System.out.println(PagerankCentrality.get(node));
+        }
+    }
+
+    static void testGraph(){
+        System.out.println(Graph.getNumberOfVertexes());
+            System.out.println(Graph.get().toString());
+    }
+
+    static void testClosenessCentrality(){
+        for (int node = 0; node < Graph.getNumberOfVertexes(); node++){
+            System.out.println(ClosenessCentrality.get(node));
         }
     }
 }

@@ -8,7 +8,7 @@ class EigenvectorCentrality {
     static EigenvalueDecomposition evdp = new EigenvalueDecomposition(adjm);
     static int largestValueNumber = 0;
 
-    static double getLargestEigenvalueNumber(){
+    private static double getLargestEigenvalueNumber(){
         double eigenValues[] = evdp.getRealEigenvalues();
         double largestValue = 0.0;
         for(int i=0; i<AdjacentMatrix.getLength(); i++){
@@ -20,6 +20,7 @@ class EigenvectorCentrality {
         return largestValue;
     }
     static double[] getRightEigenvector(){
+        getLargestEigenvalueNumber();
         Matrix vectors = evdp.getV();
         vectors = vectors.transpose();
         double[][] vector = vectors.getArray();

@@ -4,8 +4,8 @@ import centrality.AdjacentMatrix;
 import Jama.*;
 
 class KatzCentrality {
-    static final double alpha = 0.25;
-    static final double beta = 0.2;
+    static final double alpha = 0.3;
+    static final double beta = 0.3;
 
     static Matrix adjm = new Matrix(AdjacentMatrix.get());
     static Matrix identityMatrix

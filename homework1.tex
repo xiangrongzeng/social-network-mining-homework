@@ -17,6 +17,10 @@
 % this package is used for setting header and footer
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+% this package enable the chinese character
+\usepackage{CJK}
+% this package enable the hyplink
+\usepackage{hyperref}
 
 \begin{document}
 % set the title page
@@ -55,12 +59,37 @@
 % put the main text of every problem here
 Proof: Lemma2. In any directed graph, the summation of in-degrees is equal to the summation of out-degree.
 \subsection*{Solution}
-My answer is ...
+    One edge must comes from a node and end in a node. 
+    So when a node has an out-degree,
+    that means there is an edge,
+    and the edge must have an end,
+    that's the in-degree of an node.
+    So,
+    whenever there is an out-degree, 
+    there must exist an in-degree in the graph.
+    So,
+    for the graph, 
+    the in-degree and out-degree must the same.
 \clearpage
 
 \section
 % put the main text of every problem here
 Give an efficient bridge detection algorithm.
 \subsection*{Solution}
-
+\begin{CJK}{UTF8}{song}
+    假如我们在DFS时访问到了u点，
+    此时图被u点分成两部分，
+    一部分是已经访问过的点，
+    另一部分是还没有访问的点。\\
+    如果u是割点，
+    那么未访问过的点中至少有一个点在不经过u点的情况下无法访问那些已经访问过的点。
+    即，
+    对未访问过的点v进行DFS，
+    且不经过u点，
+    若能够访问到已访问过的点，
+    则u不是割点，
+    若不能访问到已访问过的点，
+    则u是割点。\\\\
+    参考资料:\url{http://blog.csdn.net/wtyvhreal/article/details/43530613}
+\end{CJK}
 \end{document}

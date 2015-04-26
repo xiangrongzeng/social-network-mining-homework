@@ -1,15 +1,14 @@
 <?xml version="1.0" ?>
 
-<project name="centrality" default="test" basedir="c:\Users\sunder\Documents\latexfile\social-network-mining\source">
-    <property name="src.dir" value="${basedir}\centrality" />
-    <property name="build.dir" value="${basedir}\classes" />
-    <property name="jamajar" value="${basedir}\jama.jar" />
-    <property name="jgraphtjar" value="${basedir}\jgrapht.jar" />
+<project name="centrality" default="test" basedir="c:\Users\sunder\Documents\project\social-network-mining\source\centrality">
+    <property name="src.dir" value="${basedir}\src" />
+    <property name="build.dir" value="${basedir}\class" />
 
     <path id="classpath">
         <pathelement location="${build.dir}" />
-        <pathelement location="${jamajar}" />
-        <pathelement location="${jgraphtjar}" />
+        <fileset dir="lib">
+            <include name="*.jar" />
+        </fileset>
     </path>
 
     <target name="init">

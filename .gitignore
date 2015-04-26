@@ -127,4 +127,4 @@ sympy-plots-for-*.tex/
 # ignore latex-homework-template folder
 latex-homework-template
 # ignore source/classes folder
-source/classes
+source/*/class

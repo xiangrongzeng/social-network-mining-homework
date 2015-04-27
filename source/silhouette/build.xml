@@ -1,0 +1,31 @@
+
+<project name="centrality" default="calc" basedir="c:\Users\sunder\Documents\project\social-network-mining\source\silhouette">
+    <property name="src.dir" value="${basedir}\src" />
+    <property name="build.dir" value="${basedir}\class" />
+
+    <path id="classpath">
+        <pathelement location="${build.dir}" />
+        <fileset dir="lib">
+            <include name="*.jar" />
+        </fileset>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build.dir}" />
+    </target>
+
+    <target name="build" depends="init" description="build all" >
+        <javac
+            srcdir="${src.dir}" destdir="${build.dir}">
+            <classpath refid="classpath" />
+        </javac>
+    </target>
+
+    <target name="calc" depends="build" description="run test">
+        <java classname="junit.awtui.TestRunner" fork="yes">
+            <arg value="AllTests" />
+            <classpath refid="classpath" />
+        </java>
+    </target>
+</project>
+

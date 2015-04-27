@@ -34,7 +34,7 @@ class Silhouette{
 
     double getDistanceWithOtherCluster(int instanceNumber, int clusterNumber){
 
-        double minDistance = 10000000;
+        double minDistance = Integer.MAX_VALUE;
         for (int i=0; i<clusters.length; i++){
             if ( i != clusterNumber){
                 double[] cluster = clusters[i];

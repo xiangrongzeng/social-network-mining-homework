@@ -128,3 +128,5 @@ sympy-plots-for-*.tex/
 latex-homework-template
 # ignore source/classes folder
 source/*/class
+
+project/project_document

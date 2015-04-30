@@ -2,6 +2,7 @@
 import itertools
 import re
 import networkx as nx
+import random
 import matplotlib.pyplot as plt
 from operator import itemgetter
 
@@ -16,10 +17,14 @@ def clique_percolation(k, filepath):
     print 'merge cliques',len(cliques)
     clusters = merge_clique(cliques)
 #    print clusters
+    new_clusters = []
+    for cluster in clusters:
+        if len(cluster) > 40:
+            new_clusters.append(cluster)
+    write_clusters(new_clusters)
     print 'draw graph'
-    draw_cluster_network(my_graph,clusters)
+    draw_cluster_network(my_graph,new_clusters)
 
-    write_clusters(clusters)
 
 def write_clusters(clusters):
     f = open('clusters.txt','a')
@@ -102,10 +107,8 @@ def draw_cluster_network(graph,clusters):
             cluster_graph.add_edge(node, v)
             original_graph.add_edge(node, v)
     pos = nx.spring_layout(cluster_graph)
-    colors = ['red','blue','black','white','yellow','green','gray','cyan','magenta']
     for i in range(0, len(clusters)):
-        nx.draw_networkx_nodes(cluster_graph,pos,clusters[i],node_color=colors[i])
-#        nx.draw_networkx_nodes(cluster_graph,pos,clusters[i],node_color=(1.0*i/len(clusters),1.0*i/len(clusters),1.0*i/len(clusters)))
+        nx.draw_networkx_nodes(cluster_graph,pos,clusters[i],node_color=(random.random(),random.random(),random.random()))
 
 
     nx.draw_networkx_edges(cluster_graph,pos, with_labels=True,alpha=0.5)

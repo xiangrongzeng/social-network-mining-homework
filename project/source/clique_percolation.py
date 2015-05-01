@@ -13,13 +13,30 @@ def clique_percolation(k, filepath):
     cliques = []
     print 'find cliques'
     find_k_clique(k, my_graph, cliques)
+    print 'clique number = ' + str(len(cliques))
 #    print cliques
-    print 'merge cliques',len(cliques)
-    clusters = merge_clique(cliques)
+    print 'merge cliques'
+    times = 0
+    bigger_clusters = []
+    smaller_clusters = cliques
+    flag = True
+    while flag:
+        times += 1
+        print '\tmerge round' + str(times) + ': cluster number=' + str(len(smaller_clusters))
+        bigger_clusters = merge_clusters(smaller_clusters)
+        if len(bigger_clusters) == len(smaller_clusters):
+            flag = False
+        else:
+            smaller_clusters = bigger_clusters
+    clusters = bigger_clusters
+#    clusters_tmp0 = merge_clique(cliques)
+#    clusters_tmp = merge_clique(clusters_tmp0)
+#    print clusters_tmp
+#    clusters = merge_clique(clusters_tmp)
 #    print clusters
     new_clusters = []
     for cluster in clusters:
-        if len(cluster) > 40:
+        if len(cluster) > 0:
             new_clusters.append(cluster)
     write_clusters(new_clusters)
     print 'draw graph'
@@ -36,21 +53,24 @@ def write_clusters(clusters):
         f.write(line)
     f.close()
 
-def merge_clique(cliques):
-    clusters = [cliques[0]]
-    for i in range(1, len(cliques)):
-        if i%20000 == 0:
-            print i,1.0*i/len(cliques)
-        clique = cliques[i]
-        for j in range(0,len(clusters)):
-            cluster = clusters[j]
-            if is_nearby(clique, cluster) == True:
-                cluster += clique
-                clusters[j] = list(set(cluster))
+def merge_clusters(clusters):
+    show_range = len(clusters)/50
+    if show_range == 0:
+        show_range = len(clusters)
+    bigger_clusters = [clusters[0]]
+    for i in range(1, len(clusters)):
+        if i%show_range == 0:
+            print i,1.0*i/len(clusters)
+        cluster = clusters[i]
+        for j in range(0,len(bigger_clusters)):
+            bigger_cluster = bigger_clusters[j]
+            if is_nearby(cluster, bigger_cluster) == True:
+                bigger_cluster += cluster
+                bigger_clusters[j] = list(set(bigger_cluster))
                 break
-            if j == len(clusters)-1:
-                clusters.append(clique)
-    return clusters
+            if j == len(bigger_clusters)-1:
+                bigger_clusters.append(cluster)
+    return bigger_clusters
 
 def is_nearby(clique1, clique2):
     clique = clique1 + clique2
@@ -74,7 +94,7 @@ def find_k_clique(k, graph, cliques):
                         new.append(node)
 ##                    print new
                     cliques.append(new)
-    print count
+#    print count
 
 
 def is_complete(nodes, graph):
@@ -121,4 +141,3 @@ if __name__ == '__main__':
 #    print graph
 #    find_k_clique(22, graph, [])
     clique_percolation(3, r'c:\Users\sunder\Documents\project\social-network-mining\project\project_document\facebook\facebook_combined.txt')
-

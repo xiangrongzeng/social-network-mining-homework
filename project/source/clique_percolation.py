@@ -36,7 +36,7 @@ def clique_percolation(k, filepath):
 #    print clusters
     new_clusters = []
     for cluster in clusters:
-        if len(cluster) > 0:
+        if len(cluster) > 70:
             new_clusters.append(cluster)
     write_clusters(new_clusters)
     print 'draw graph'

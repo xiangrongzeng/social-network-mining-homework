@@ -11,17 +11,32 @@ def clique_percolation(k, filepath):
     my_graph = get_graph(filepath)
     sorted(my_graph.iteritems(), key=itemgetter(0), reverse=False)
     cliques = []
-    relative = {}
     print 'find cliques'
-    find_k_clique(k, my_graph, cliques, relative)
+    find_k_clique(k, my_graph, cliques)
+    print 'clique number = ' + str(len(cliques))
 #    print cliques
-#    print relative
-    print 'merge cliques',len(cliques)
-    clusters = merge_clique(cliques, relative, k)
-    print clusters
+    print 'merge cliques'
+    times = 0
+    bigger_clusters = []
+    smaller_clusters = cliques
+    flag = True
+    while flag:
+        times += 1
+        print '\tmerge round' + str(times) + ': cluster number=' + str(len(smaller_clusters))
+        bigger_clusters = merge_clusters(smaller_clusters)
+        if len(bigger_clusters) == len(smaller_clusters):
+            flag = False
+        else:
+            smaller_clusters = bigger_clusters
+    clusters = bigger_clusters
+#    clusters_tmp0 = merge_clique(cliques)
+#    clusters_tmp = merge_clique(clusters_tmp0)
+#    print clusters_tmp
+#    clusters = merge_clique(clusters_tmp)
+#    print clusters
     new_clusters = []
     for cluster in clusters:
-        if len(cluster) > 20:
+        if len(cluster) > 0:
             new_clusters.append(cluster)
     write_clusters(new_clusters)
     print 'draw graph'
@@ -38,44 +53,35 @@ def write_clusters(clusters):
         f.write(line)
     f.close()
 
-def merge_clique(cliques, relative, k):
-    clusters = []
-    is_visited = [0]*len(cliques)
-    for clique_number in range(0, len(cliques)):
-        all_together = []
-        deep_search(cliques, clique_number, relative, is_visited, all_together, k)
-        if all_together != []:
-            cluster = []
-            for i in all_together:
-                cluster += cliques[i]
-            clusters.append({}.fromkeys(cluster).keys())
-    return clusters
+def merge_clusters(clusters):
+    show_range = len(clusters)/50
+    if show_range == 0:
+        show_range = len(clusters)
+    bigger_clusters = [clusters[0]]
+    for i in range(1, len(clusters)):
+        if i%show_range == 0:
+            print i,1.0*i/len(clusters)
+        cluster = clusters[i]
+        for j in range(0,len(bigger_clusters)):
+            bigger_cluster = bigger_clusters[j]
+            if is_nearby(cluster, bigger_cluster) == True:
+                bigger_cluster += cluster
+                bigger_clusters[j] = list(set(bigger_cluster))
+                break
+            if j == len(bigger_clusters)-1:
+                bigger_clusters.append(cluster)
+    return bigger_clusters
 
-def deep_search(cliques, clique_number, relative, is_visited, all_together, k):
-    if is_visited[clique_number] == 0:
-        clique = cliques[clique_number]
-        is_visited[clique_number] = 1
-        # 计算访问了多少点，了解进度
-        visited = sum(is_visited)
-#        if visited%20000 == 0:
-#            print visited/len(is_visited),visited
-        print clique_number, visited,len(all_together)
+def is_nearby(clique1, clique2):
+    clique = clique1 + clique2
+    clique = list(set(clique))
+    if len(clique) <= len(clique2) + 1:
+        return True
+    else:
+        return False
 
-        for nodes in (itertools.combinations(clique,k-1)):
-            together = relative[nodes[0]]
-            for i in range(1, len(nodes)):
-                together = list(set(together).intersection(set(relative[nodes[i]])))
-            all_together += together
-        all_together = {}.fromkeys(all_together).keys()
-        while all_together:
-            clique_number = all_together.pop()
-            deep_search(cliques, clique_number, relative, is_visited, all_together, k)
-
-
-
-def find_k_clique(k, graph, cliques, relative):
+def find_k_clique(k, graph, cliques):
     count = 0
-    number = 0
     for central_node,adjacent_nodes in graph.items():
         if len(adjacent_nodes) >= k-1:
             for nodes in (itertools.combinations(adjacent_nodes,k-1)):
@@ -84,20 +90,11 @@ def find_k_clique(k, graph, cliques, relative):
                 if is_complete(nodes,graph) == True:
                     count
                     new = [central_node]
-                    try:
-                        relative[central_node].append(number)
-                    except:
-                        relative[central_node] = [number]
                     for node in nodes:
                         new.append(node)
-                        try:
-                            relative[node].append(number)
-                        except:
-                            relative[node] = [number]
 ##                    print new
                     cliques.append(new)
-                    number += 1
-    print count
+#    print count
 
 
 def is_complete(nodes, graph):
@@ -131,15 +128,12 @@ def draw_cluster_network(graph,clusters):
             original_graph.add_edge(node, v)
     pos = nx.spring_layout(cluster_graph)
     for i in range(0, len(clusters)):
-        color = (random.random(),random.random(),random.random())
-        print color,clusters[i]
-        nx.draw_networkx_nodes(cluster_graph,pos,clusters[i],node_color=color)
+        nx.draw_networkx_nodes(cluster_graph,pos,clusters[i],node_color=(random.random(),random.random(),random.random()))
 
 
     nx.draw_networkx_edges(cluster_graph,pos, with_labels=True,alpha=0.5)
-    plt.show()
 #    nx.draw(original_graph)
-#    plt.show()
+    plt.show()
 
 
 if __name__ == '__main__':

@@ -6,7 +6,8 @@ import random
 import matplotlib.pyplot as plt
 from operator import itemgetter
 
-def clique_percolation(k, filepath):
+def clique_percolation(filepath):
+    k = 3
     print 'create graph'
     my_graph = get_graph(filepath)
     sorted(my_graph.iteritems(), key=itemgetter(0), reverse=False)
@@ -133,11 +134,11 @@ def draw_cluster_network(graph,clusters):
 
     nx.draw_networkx_edges(cluster_graph,pos, with_labels=True,alpha=0.5)
 #    nx.draw(original_graph)
-    plt.show()
+    plt.savefig('2.png')
 
 
 if __name__ == '__main__':
 #    graph = get_graph(r'c:\Users\sunder\Documents\project\social-network-mining\project\project_document\facebook\facebook_combined_min.txt')
 #    print graph
 #    find_k_clique(22, graph, [])
-    clique_percolation(3, r'c:\Users\sunder\Documents\project\social-network-mining\project\project_document\facebook\facebook_combined.txt')
+    clique_percolation(r'c:\Users\sunder\Documents\project\social-network-mining\project\project_document\facebook\facebook_combined_min.txt')

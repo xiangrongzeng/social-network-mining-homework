@@ -4,10 +4,12 @@ import re
 import networkx as nx
 import random
 import matplotlib.pyplot as plt
+import os
 from operator import itemgetter
 
 def clique_percolation(filepath):
     k = 3
+    threshold = 0
     print 'create graph'
     my_graph = get_graph(filepath)
     sorted(my_graph.iteritems(), key=itemgetter(0), reverse=False)
@@ -37,15 +39,19 @@ def clique_percolation(filepath):
 #    print clusters
     new_clusters = []
     for cluster in clusters:
-        if len(cluster) > 70:
+        if len(cluster) > threshold:
             new_clusters.append(cluster)
+    print 'save communites to disk'
     write_clusters(new_clusters)
-    print 'draw graph'
-    draw_cluster_network(my_graph,new_clusters)
+#    print 'draw graph'
+#    draw_cluster_network(my_graph,new_clusters)
 
 
 def write_clusters(clusters):
-    f = open('clusters.txt','a')
+    filename = 'mycommunities.txt'
+    if os.path.exists(filename):
+        os.remove(filename)
+    f = open(filename,'a')
     for cluster in clusters:
         line = ''
         for node in cluster:
@@ -141,4 +147,4 @@ if __name__ == '__main__':
 #    graph = get_graph(r'c:\Users\sunder\Documents\project\social-network-mining\project\project_document\facebook\facebook_combined_min.txt')
 #    print graph
 #    find_k_clique(22, graph, [])
-    clique_percolation(r'c:\Users\sunder\Documents\project\social-network-mining\project\project_document\facebook\facebook_combined_min.txt')
+    clique_percolation(r'network_data')

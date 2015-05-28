@@ -2,7 +2,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import re
 
-filepath = "c:\\Users\\sunder\\Documents\\project\\social-network-mining\\project\\project_document\\facebook\\facebook_combined.txt"
+filepath = "network_data"
 facebook = open(filepath)
 
 G = nx.Graph()

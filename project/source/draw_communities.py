@@ -37,6 +37,7 @@ def draw_cluster_network(graph_data_path, communities_data_path):
             cluster_graph.add_edge(node, v)
             original_graph.add_edge(node, v)
     pos = nx.spring_layout(cluster_graph)
+    pos = nx.shell_layout(cluster_graph)
     for i in range(0, len(clusters)):
         nx.draw_networkx_nodes(cluster_graph,
                                pos,

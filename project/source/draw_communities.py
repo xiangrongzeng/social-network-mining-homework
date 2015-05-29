@@ -38,12 +38,22 @@ def draw_cluster_network(graph_data_path, communities_data_path):
             original_graph.add_edge(node, v)
     pos = nx.spring_layout(cluster_graph)
     for i in range(0, len(clusters)):
-        nx.draw_networkx_nodes(cluster_graph,pos,clusters[i],node_color=(random.random(),random.random(),random.random()))
+        nx.draw_networkx_nodes(cluster_graph,
+                               pos,
+                               node_size = 50,
+                               nodelist = clusters[i],
+                               node_color=(random.random(),random.random(),random.random()))
 
 
-    nx.draw_networkx_edges(cluster_graph,pos, with_labels=True,alpha=0.5)
+    nx.draw_networkx_edges(cluster_graph,
+                           pos,
+                           with_labels=True,
+                           alpha=0.5,
+                           width = 0.5)
 #    nx.draw(original_graph)
+    plt.show()
     plt.savefig('2.png')
+    plt.clf()
 
 if __name__ == '__main__':
     draw_cluster_network('network_data', 'mycommunities.txt')

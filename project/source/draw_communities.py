@@ -58,8 +58,8 @@ def draw_cluster_network(graph_data_path, communities_data_path):
                             labels,
                             fontsize=16)
 #    nx.draw(original_graph)
-    plt.show()
     plt.savefig('2.png')
+    plt.show()
     plt.clf()
 
 if __name__ == '__main__':

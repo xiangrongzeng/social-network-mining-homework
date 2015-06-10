@@ -1,0 +1,6 @@
+mapped_data
+original_data
+*.cookie
+*.log
+*.dat
+*.pyc
